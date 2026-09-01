@@ -24,3 +24,23 @@ Since Apple's iOS 14 privacy changes, platform-reported ad conversions are infla
 ## System at a Glance
 
 Four agents, one shared state layer, one non-negotiable safety rule: nothing executes without passing through the Guardrail Agent.
+
+Media Buyer Agent → hourly yield optimization
+Creative Agent → on-brand copy + image generation
+Attribution Agent → server-verified conversion truth
+Guardrail Agent → deterministic safety validation on every action
+
+Full architecture breakdown in [`ad-platoon-prd/README.md`](./ad-platoon-prd/README.md).
+## What This Repo Demonstrates
+
+- **Zero-to-one product specification** — a complete PRD covering architecture, API strategy, MLOps, and compliance
+- **Technical decision-making with evidence** — the LoRA/DPO fine-tuning decision was made against a measured reliability delta (12–18% → <0.5% schema error rate), not intuition
+- **Trust and safety design for autonomous AI** — a 3-tier autonomy framework built around how much risk a human is actually willing to extend, not just what the AI is technically capable of
+- **Working software, not just specs** — a functional prototype validating the core interaction loops with a real backend
+
+## About Me
+
+[LinkedIn](#) · [Portfolio](#) · [Résumé](#)
+
+Currently building Ad Platoon full-time while leading product strategy for Fortune 500 martech clients as COO at The Creed. Open to Senior AI Product Manager roles.
+  
