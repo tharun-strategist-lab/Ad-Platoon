@@ -21,28 +21,38 @@ Ad Platoon is an autonomous, multi-agent AI marketing engine engineered for high
 
 The system operates as an integrated multi-agent platform running within isolated single-tenant VPC environments. Operations are driven by four autonomous agents, an asynchronous state machine layer, a deterministic rule validator, and an Anti-Ban Circuit Breaker Gateway.
 
-┌──────────────────────────────────────────────────────────────────────────────────┐
-│                    AD PLATOON — SINGLE-TENANT VPC LAYER                          │
-│                                                                                  │
-│   ┌──────────────────┐    ┌─────────────────────┐    ┌──────────────────────┐    │
-│   │ Media Buyer      │    │ Copywriter/Creative │    │ Attribution Agent    │    │
-│   │ Agent (Alloc)    │    │ Agent (RAG/vLLM)    │    │ (First-Party Truth)  │    │
-│   └────────┬─────────┘    └──────────┬──────────┘    └──────────┬───────────┘    │
-│            │                         │                          │                │
-│            └─────────────────────────┼──────────────────────────┘                │
-│                                      ▼                                           │
-│                     ┌──────────────────────────────────┐                         │
-│                     │ Deterministic Guardrail Agent    │                         │
-│                     │ (Rule Validation & Delta Caps)   │                         │
-│                     └────────────────┬─────────────────┘                         │
-│                                      ▼                                           │
-│                     ┌──────────────────────────────────┐                         │
-│                     │  Circuit Breaker API Gateway     │                         │
-│                     │  (Rate Limit / Jitter / Redlock) │                         │
-│                     └────────────────┬─────────────────┘                         │
-│                                      ▼                                           │
-│                 Meta Graph / Google Ads API / TikTok API                         │
-└──────────────────────────────────────────────────────────────────────────────────┘
+graph TD
+    subgraph VPC["AD PLATOON — SINGLE-TENANT VPC LAYER"]
+        direction TD
+        
+        %% Agents Layer
+        subgraph Agents[" "]
+            direction LR
+            MB["<b>Media Buyer Agent</b><br/>(Alloc)"]
+            CC["<b>Copywriter/Creative Agent</b><br/>(RAG/vLLM)"]
+            AA["<b>Attribution Agent</b><br/>(First-Party Truth)"]
+        end
+
+        %% Flow
+        GA["<b>Deterministic Guardrail Agent</b><br/>(Rule Validation & Delta Caps)"]
+        CB["<b>Circuit Breaker API Gateway</b><br/>(Rate Limit / Jitter / Redlock)"]
+        APIs["<b>Meta Graph / Google Ads API / TikTok API</b>"]
+
+        MB --> GA
+        CC --> GA
+        AA --> GA
+        GA --> CB
+        CB --> APIs
+    end
+
+    %% Styling
+    style VPC fill:#0f172a,stroke:#334155,stroke-width:2px,color:#fff
+    style GA fill:#1e293b,stroke:#475569,stroke-width:1px,color:#fff
+    style CB fill:#1e293b,stroke:#475569,stroke-width:1px,color:#fff
+    style MB fill:#1e293b,stroke:#475569,stroke-width:1px,color:#fff
+    style CC fill:#1e293b,stroke:#475569,stroke-width:1px,color:#fff
+    style AA fill:#1e293b,stroke:#475569,stroke-width:1px,color:#fff
+    style APIs fill:#0f172a,stroke:#3b82f6,stroke-width:1px,color:#fff
 
 ### Architecture Topology
 
