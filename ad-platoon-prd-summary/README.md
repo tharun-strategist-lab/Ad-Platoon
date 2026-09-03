@@ -6,6 +6,16 @@
 > **Deployment Architecture:** Single-Tenant VPC Infrastructure ($10K–$50K+/month)
 
 ---
+## Problem Statement
+
+Performance marketing teams operate across disconnected systems that don't talk to each other in real time:
+
+- **Attribution inflation**: Platform-reported conversions are inflated 15–40% vs. server-verified truth, because platforms fill tracking gaps with modelled estimates rather than observed data.
+- **Decision latency**: Human media buyers review performance once or twice daily. Budget continues flowing into underperforming campaigns for hours between reviews.
+- **Creative production lag**: A 48-hour brief-to-live-ad cycle means fatiguing creative keeps burning budget for days before replacement.
+- **Disconnected lead quality signal**: Ad spend decisions are typically made without CRM and downstream conversion data — a channel driving cheap but low-quality leads looks identical to a channel driving expensive but high-value ones, until someone manually cross-references two separate systems.
+
+Ad Platoon is an autonomous multi-agent system that closes all four gaps continuously — verifying truth server-side across ad platform, payment gateway, and CRM APIs, optimizing hourly instead of daily, generating replacement creative in under 5 minutes, and feeding lead-quality signal back into spend decisions in real time.
 
 ## 1. Executive Summary & Business Objectives
 
